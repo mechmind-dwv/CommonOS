@@ -1,31 +1,28 @@
 #!/usr/bin/env node
 
-const version = "0.1.0";
+import { doctor } from "./commands/doctor.js";
+import { version } from "./commands/version.js";
 
 const command = process.argv[2];
 
 switch (command) {
 
-  case "doctor":
-    console.log("Running CommonOS Doctor...");
-    break;
+    case "doctor":
+        await doctor();
+        break;
 
-  case "architecture":
-    console.log("Running Architecture Checks...");
-    break;
+    case "version":
+        version();
+        break;
 
-  case "version":
-    console.log(version);
-    break;
+    default:
 
-  default:
-    console.log(`
+        console.log(`
 CommonOS CLI
 
 Commands
 
   commonos doctor
-  commonos architecture
   commonos version
 
 `);
