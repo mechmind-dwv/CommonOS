@@ -1,8 +1,10 @@
-name: Quality Gate
+name: CommonOS Quality Gate
 
 on:
-
   push:
+    branches:
+      - main
+      - develop
 
   pull_request:
 
@@ -19,9 +21,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - run: npm ci
 
-      - run: node scripts/architecture-check.js
+      - run: npm run typecheck
 
-      - run: npx tsc --noEmit
+      - run: npm run doctor
