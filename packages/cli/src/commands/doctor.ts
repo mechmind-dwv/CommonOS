@@ -1,21 +1,26 @@
+import { architecture } from "./architecture.js";
+import { typecheck } from "./typecheck.js";
+
 export async function doctor() {
 
-    console.log("================================");
+    console.log("==================================");
     console.log(" CommonOS Doctor");
-    console.log("================================");
+    console.log("==================================");
 
-    console.log("✓ Workspace");
+    console.log("Running Architecture...");
+    const a = architecture();
 
-    console.log("✓ TypeScript");
+    console.log("Running TypeScript...");
+    const t = typecheck();
 
-    console.log("✓ Kernel");
+    console.log("----------------------------------");
 
-    console.log("✓ SDK");
+    if (a === 0 && t === 0) {
+        console.log("System healthy.");
+        process.exit(0);
+    }
 
-    console.log("✓ CLI");
-
-    console.log();
-
-    console.log("System healthy.");
+    console.log("Doctor found problems.");
+    process.exit(1);
 
 }
