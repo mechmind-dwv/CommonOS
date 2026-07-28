@@ -4,13 +4,18 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "strict": true,
+    "declaration": true,
+    "sourceMap": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "declaration": true,
-    "sourceMap": true,
     "outDir": "dist"
   },
+  "include": [
+    "packages/**/*.ts",
+    "apps/**/*.ts",
+    "backend/**/*.ts"
+  ],
   "exclude": [
     "node_modules",
     "dist"
