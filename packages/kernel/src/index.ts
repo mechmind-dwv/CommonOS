@@ -8,3 +8,5 @@ export * from "./runtime/ConfigurationManager.js";
 export * from "./runtime/ServiceRegistry.js";
 export * from "./runtime/PluginManager.js";
 export * from "./runtime/LifecycleManager.js";
+
+export * from "./application/ApplicationKernel.js";

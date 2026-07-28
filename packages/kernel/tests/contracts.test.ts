@@ -1,6 +1,6 @@
-import { Logger } from "../src/runtime/Logger.js";
-import { EventBus } from "../src/core/EventBus.js";
-import { ServiceRegistry } from "../src/runtime/ServiceRegistry.js";
+import { Logger } from "../dist/runtime/Logger.js";
+import { EventBus } from "../dist/core/EventBus.js";
+import { ServiceRegistry } from "../dist/runtime/ServiceRegistry.js";
 
 function assert(condition: boolean, message: string) {
     if (!condition) {

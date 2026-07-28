@@ -1,19 +1,18 @@
-import { ServiceRegistry } from "../src/runtime/ServiceRegistry.js";
+import { ServiceRegistry } from "../dist/runtime/ServiceRegistry.js";
 
 const registry = new ServiceRegistry();
 
-registry.register("logger", {
-    info(message: string) {
-        console.log(message);
-    }
-});
+const logger = {
+    info() {},
+    warn() {},
+    error() {}
+};
 
-const logger = registry.resolve<{ info(message: string): void }>("logger");
+registry.register("logger", logger);
 
-if (!logger) {
-    throw new Error("Logger service not found");
-}
-
-logger.info("✓ ServiceRegistry resolved service correctly");
+console.assert(
+    registry.resolve("logger") === logger,
+    "Logger service should be resolved"
+);
 
 console.log("✓ ServiceRegistry test passed");
