@@ -5,7 +5,9 @@ export class PluginManager {
 
   private readonly plugins = new Map<string, Plugin>();
 
-  private readonly context = new KernelContext();
+  constructor(
+    private readonly context: KernelContext
+  ) {}
 
   register(plugin: Plugin): void {
 
@@ -14,27 +16,21 @@ export class PluginManager {
     }
 
     this.plugins.set(plugin.id, plugin);
-
   }
 
   async startAll(): Promise<void> {
-
     for (const plugin of this.plugins.values()) {
       await plugin.start(this.context);
     }
-
   }
 
   async stopAll(): Promise<void> {
-
     for (const plugin of this.plugins.values()) {
       await plugin.stop();
     }
-
   }
 
   getContext(): KernelContext {
     return this.context;
   }
-
 }
