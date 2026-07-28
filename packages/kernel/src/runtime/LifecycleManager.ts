@@ -1,4 +1,4 @@
-import type { Plugin } from "../index.js";
+import type { Plugin } from "../contracts/Plugin.js";
 import { KernelContext } from "./KernelContext.js";
 
 export class LifecycleManager {
