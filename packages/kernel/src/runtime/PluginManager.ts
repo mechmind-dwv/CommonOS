@@ -1,8 +1,11 @@
 import type { Plugin } from "../index.js";
+import { KernelContext } from "./KernelContext.js";
 
 export class PluginManager {
 
-  private plugins = new Map<string, Plugin>();
+  private readonly plugins = new Map<string, Plugin>();
+
+  private readonly context = new KernelContext();
 
   register(plugin: Plugin): void {
 
@@ -14,24 +17,24 @@ export class PluginManager {
 
   }
 
-  get(id: string): Plugin | undefined {
-    return this.plugins.get(id);
-  }
-
-  list(): Plugin[] {
-    return [...this.plugins.values()];
-  }
-
   async startAll(): Promise<void> {
+
     for (const plugin of this.plugins.values()) {
-      await plugin.start();
+      await plugin.start(this.context);
     }
+
   }
 
   async stopAll(): Promise<void> {
+
     for (const plugin of this.plugins.values()) {
       await plugin.stop();
     }
+
+  }
+
+  getContext(): KernelContext {
+    return this.context;
   }
 
 }
