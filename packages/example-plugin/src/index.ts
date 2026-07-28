@@ -1,5 +1,7 @@
-import type { Plugin } from "../../kernel/src/contracts/Plugin.js";
-import type { KernelContext } from "../../kernel/src/runtime/KernelContext.js";
+import type {
+  Plugin,
+  KernelContext
+} from "@commonos/kernel";
 
 export class ExamplePlugin implements Plugin {
 
